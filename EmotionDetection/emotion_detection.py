@@ -15,4 +15,15 @@ def emotion_detector(text_to_analyze):
 
     emotions["dominant_emotion"] = [emotion for emotion, score in emotions.items() if score == max_score][0]
 
-    return emotions
+    if response.status_code == 200:
+        return emotions
+    elif response.status_code == 400:
+        for emotion in emotions.values():
+            emotion = None
+
+        return emotions
+    else:
+        for emotion in emotions.values():
+            emotion = None
+
+        return emotions
